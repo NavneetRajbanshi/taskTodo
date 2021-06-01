@@ -1,13 +1,25 @@
+from sqlalchemy import Column, Integer, String, ForeignKey
 from .database import Base
-from sqlalchemy import Column, String, Boolean
+from sqlalchemy.orm import relationship
 
 
-class Login(Base):
-    __tablename__ = "login"
+class Blog(Base):
+    __tablename__ = 'blogs'
 
-    first_name = Column(String(20), primary_key=True, index=True)
-    last_name = Column(String(20), nullable=False)
-    username = Column(String(20), nullable=False)
-    email = Column(String(20), nullable=False)
-    password = Column(String(250), nullable=False)
-    status = Column(Boolean, nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
+    body = Column(String)
+    user_id = Column(Integer, ForeignKey('users.id'))
+
+    creator = relationship("User", back_populates="blogs")
+
+
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    email = Column(String)
+    password = Column(String)
+
+    blogs = relationship('Blog', back_populates="creator")
