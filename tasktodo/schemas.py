@@ -1,37 +1,32 @@
+from typing import List, Optional
 from pydantic import BaseModel
-from typing import Optional
+from sqlalchemy.sql.sqltypes import Boolean
 
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
+class task(BaseModel):
+    title: str
+    body: str
 
-
-class UserResponse(BaseModel):
-    first_name: str
-    last_name: str
-    username: str
-
-    class Config:
+class task(task):
+    class Config():
         orm_mode = True
 
 
-class CreateUser(BaseModel):
-    first_name: str
-    last_name: str
-    username: str
-    email: str
-    password: str
-    status: int
-
-
 class User(BaseModel):
-    first_name: str
+    first_name:str
     last_name: str
-    username: str
-    email: str
-    status: int
+    user_name:str
+    email:str
+    password:str
+    status:str
+
+class ShowUser(BaseModel):
+    first_name:str
+    last_name: str
+    user_name:str
+    email:str
+    
+    class Config():
+        orm_mode = True
 
 
-class TokenData(BaseModel):
-    username: Optional[str] = None
