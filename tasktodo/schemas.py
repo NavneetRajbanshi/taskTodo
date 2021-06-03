@@ -13,18 +13,19 @@ class task(taskbase):
 
 
 class User(BaseModel):
-    first_name:str
+    first_name: str
     last_name: str
-    user_name:str
-    email:str
-    password:str
-    status:str
+    user_name: str
+    email: str
+    password: str
+    status: str
+    super_user : str 
 
 class ShowUser(BaseModel):
-    first_name:str
+    first_name: str
     last_name: str
-    user_name:str
-    email:str
+    user_name: str
+    email: str
     
     class Config():
         orm_mode = True
@@ -32,7 +33,7 @@ class ShowUser(BaseModel):
 
 class ShowTask(BaseModel):
     title: str
-    body:str
+    body: str
     creator: ShowUser
 
     class Config():
@@ -40,7 +41,7 @@ class ShowTask(BaseModel):
 
 class Login(BaseModel):
     username: str
-    password:str
+    password: str
 
 
 class Token(BaseModel):

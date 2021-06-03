@@ -16,7 +16,7 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     password = Column(String)
     status = Column(String)
-    super_user = Column(Boolean, nullable=False)
+    super_user = Column(String)
 
     task = relationship("task", back_populates="owner")
 
