@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.functions import user
 from passlib.context import CryptContext
@@ -32,5 +32,12 @@ class task(Base):
     owner = relationship("User", back_populates="task")
     
 
+class Project(Base):
+    __tablename__ = "project"
 
+    project_id = Column(Integer, primary_key=True, index=True)
+    project_name = Column(String(20), index=True)
+    date_of_completion = Column(Date, nullable=False)
+    budget = Column(Float, nullable=False)
+    description = Column(String, index=True)
 
