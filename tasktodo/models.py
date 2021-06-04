@@ -21,12 +21,12 @@ class User(Base):
     
 
 
-class task(Base):
-    __tablename__ = "Task"
+class Task(Base):
+    __tablename__ = "task"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String, index=True)
+    Task_Name = Column(String, index=True)
+    Task_description = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     

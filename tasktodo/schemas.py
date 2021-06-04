@@ -3,13 +3,6 @@ from pydantic import BaseModel
 from sqlalchemy.sql.sqltypes import Boolean
 
 
-class Taskbase(BaseModel):
-    title: str
-    body: str
-
-class Task(Taskbase):
-    class Config():
-        orm_mode = True
 
 
 class User(BaseModel):
@@ -31,9 +24,14 @@ class ShowUser(BaseModel):
         orm_mode = True
 
 
+
+class Task(BaseModel):
+    Task_Name: str
+    Task_description: str
+
 class ShowTask(BaseModel):
-    title: str
-    body: str
+    Task_Name: str
+    Task_description: str
     creator: ShowUser
 
     class Config():
